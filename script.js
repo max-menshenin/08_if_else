@@ -14,6 +14,8 @@ answerField.innerText = `Вы загадали число ${answerNumber }?`;
 document.getElementById('btnRetry').addEventListener('click', function () {
     minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
     maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
+    answerNumber = 0;
+    orderNumber = 1;
 
 })
 
@@ -37,7 +39,7 @@ document.getElementById('btnOver').addEventListener('click', function () {
     }
 })
 
-document.getElementById('btnLess').addEventListener('click', function () {
+document.getElementById('btnLes').addEventListener('click', function () {
     if (gameRun){
         if (minValue === maxValue){
             const phraseRandom = Math.round( Math.random());
@@ -48,7 +50,7 @@ document.getElementById('btnLess').addEventListener('click', function () {
             answerField.innerText = answerPhrase;
             gameRun = false;
         } else {
-            minValue = answerNumber  + 1;
+            maxValue = answerNumber  + 1;
             answerNumber  = Math.floor((minValue + maxValue) / 2);
             orderNumber++;
             orderNumberField.innerText = orderNumber;
@@ -56,6 +58,8 @@ document.getElementById('btnLess').addEventListener('click', function () {
         }
     }
 })
+
+
 document.getElementById('btnEqual').addEventListener('click', function () {
     if (gameRun){
         answerField.innerText = `Я всегда угадываю\n\u{1F60E}`
