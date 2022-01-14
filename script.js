@@ -17,6 +17,8 @@ document.getElementById('btnRetry').addEventListener('click', function () {
     answerNumber = 0;
     orderNumber = 1;
 
+    orderNumberField = ''
+    answerField = ''
 })
 
 document.getElementById('btnOver').addEventListener('click', function () {
@@ -39,7 +41,7 @@ document.getElementById('btnOver').addEventListener('click', function () {
     }
 })
 
-document.getElementById('btnLes').addEventListener('click', function () {
+document.getElementById('btnLess').addEventListener('click', function () {
     if (gameRun){
         if (minValue === maxValue){
             const phraseRandom = Math.round( Math.random());
