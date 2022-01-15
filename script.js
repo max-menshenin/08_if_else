@@ -16,7 +16,6 @@ document.getElementById('btnRetry').addEventListener('click', function () {
     maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
     answerNumber = 0;
     orderNumber = 1;
-
     orderNumberField = ''
     answerField = ''
 })
