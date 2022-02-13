@@ -1,3 +1,34 @@
+function toReadable (num) {
+    const number = ['', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемб', 'девять'];
+      const moreNumbers = ['', 'одиннадцать', 'двеннадцать', 'триннадцать', 'четырнадцать', 'пятнадцать', 'шестнадцать', 'семнадцать', 'восемнадцать', 'девятнадцать'];
+      const decimals = ['', 'десять' ,'двенадцать', 'тринадцать', 'пятнадцать', 'пятдесят', 'шесьдесят', 'семьдесят', 'восемьдесят', 'девяносто'];
+      let result = '';
+     
+      if (num.toString().length === 3) {
+        let hundreds = Math.floor(num * 0.01);
+        num -= hundreds * 100;
+        result += `${number[hundreds]} сто `;
+      }
+    
+      if (num.toString().length === 2 && (num >= 20 || num == 10)) {
+        let dec = Math.floor(num * 0.1);
+        num -= dec * 10;
+        result += `${decimals[dec]} `;
+      }
+    
+      else if (num.toString().length === 2 && num < 20) {
+        result += `${moreNumbers[num - 10]} `;
+        num = '';
+      }  
+    
+      if (num.toString().length === 1) {
+        result += `${number[num]}`;
+      }
+    
+      if (result == '' && num == '0') return 'ноль'
+      return (result.slice(-1) == " ") ? result.slice(0, -1) : result
+    }
+    
 let minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
 let maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
 alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
@@ -66,8 +97,7 @@ document.getElementById('btnLess').addEventListener('click', function () {
 
 document.getElementById('btnEqual').addEventListener('click', function () {
     if (gameRun){
-        answerField.innerText = `Я всегда угадываю\n\u{1F60E}`
+        answerField.innerText = `Как знал, молодец\n\u{1F60E}`
         gameRun = false;
     }
 })
-
